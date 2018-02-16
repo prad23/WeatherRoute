@@ -1,0 +1,13 @@
+Metadata-Version: 1.2
+Name: WeatherRoute
+Version: 0.0.1.dev0
+Summary: Get Weather along the way.
+Home-page: https://github.com/prad23/WeatherRoute
+Author: Prad23
+Author-email: pradyu23@gmail.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: UNKNOWN
+Keywords: weather route
+Platform: UNKNOWN
+Requires-Python: >=3.5
