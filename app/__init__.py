@@ -9,8 +9,8 @@ Format = '%(asctime)-15s:%(name)s:%(levelname)s--> %(message)s'
 logging.basicConfig (format=Format, filename="weatherRoute.log", level="INFO", filemode="w")
 log = logging.getLogger(__name__)
 
-__destination_city__ = "San_Francisco"
-__destination_state__ = "CA"
+__destination_city__ = input("Enter destination city: ")
+__destination_state__ = input("Enter destination state: ")
 
 
 def _weatherResponse(weather_response):
@@ -58,12 +58,13 @@ def main():
         log.info(" Distance and duration between %s and %s is %s and %s" %(origin,destination,_distance,_duration))
         weather_url = weather.get_weatherurl()
         output_format = weather.get_weatheroutputformat()
+        log.info(_places_list)
         for place in _places_list:
-            log.info("Invoke weather API for location %s" % (place.split(" ")[0]))
+            log.info("Invoke weather API for location %s" % (place.split(",")[0]))
             weather_req = weather_request.WeatherRequest()
             weather_req.set_url(weather_url)
-            weather_req.set_city(place.split(" ")[0])
-            weather_req.set_state(place.split(" ")[1])
+            weather_req.set_city(place.rsplit(" ",maxsplit=1)[0])
+            weather_req.set_state(place.rsplit(" ",maxsplit=1)[1])
             weather_req.set_format(output_format)
             weather_res = weather_response.WeatherResponse()
             weather.Weather(weather_req, weather_res)
